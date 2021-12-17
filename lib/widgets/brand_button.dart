@@ -18,9 +18,13 @@ class BrandButton extends StatelessWidget {
     return ElevatedButton(
         style: ElevatedButton.styleFrom(
             side: BorderSide(width: 2.0, color: color),
+            
             onPrimary: Colors.brown,
             primary: Colors.white,
-            padding: EdgeInsets.symmetric(horizontal: 32, vertical: 10)),
+            padding: EdgeInsets.symmetric(horizontal: 32, vertical: 10)
+            
+          ),
+        
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [

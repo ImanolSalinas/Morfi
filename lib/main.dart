@@ -9,6 +9,7 @@ import 'package:flutter_vsc/widgets/circular_button.dart';
 import 'package:flutter_vsc/widgets/icon_image_button.dart';
 /* import 'package:flutter_vsc/widgets/button_modal.dart'; */
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'Prueba.dart';
 
 void main() => runApp(
     MiApp()); // estructura de la funcion main, ejecuta el primer widget de la aplicacion.
@@ -38,10 +39,11 @@ class Inicio extends StatefulWidget {
 }
 
 class _InicioState extends State<Inicio> {
+  bool _flag = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.amber,
         appBar: AppBar(
           title: Text("Mi Asadfp"),
         ),
@@ -156,7 +158,7 @@ class _InicioState extends State<Inicio> {
                 height: 70,
                 image: Image.asset(
                   'assets/images/ramen.png',
-                  height: 10,
+                  scale: 0.6,
                   fit: BoxFit.cover,
                 ),
                 color: MyColors.white,
@@ -167,12 +169,190 @@ class _InicioState extends State<Inicio> {
                 height: 80,
                 image: Image.asset(
                   'assets/images/vegan-food.png',
-                  fit: BoxFit.cover,
+                  fit: BoxFit.fitWidth,
                 ),
                 color: MyColors.white,
                 onPressed: () {}),
+
             //BottonModal(),
+            Container(
+              margin: EdgeInsets.all(10.0),
+              child: SizedBox(
+                width: 90,
+                height: 90,
+                child: FloatingActionButton(
+                  onPressed: () {},
+                  backgroundColor: MyColors.white,
+                  mini: false,
+                  child: Image.asset(
+                    'assets/images/ramen.png',
+                    height: 60,
+                    width: 60,
+                  ),
+                ),
+              ),
+            ),
+
+            Container(
+              margin: EdgeInsets.all(10.0),
+              child: SizedBox(
+                width: 90,
+                height: 90,
+                child: FloatingActionButton(
+                  onPressed: () {},
+                  backgroundColor: MyColors.white,
+                  mini: false,
+                  child: Image.asset(
+                    'assets/images/beef.png',
+                    height: 60,
+                    width: 60,
+                  ),
+                ),
+              ),
+            ),
+
+            Container(
+              margin: EdgeInsets.all(10.0),
+              child: SizedBox(
+                width: 90,
+                height: 90,
+                child: FloatingActionButton(
+                  onPressed: () {},
+                  backgroundColor: MyColors.white,
+                  mini: false,
+                  child: Image.asset(
+                    'assets/images/beef.png',
+                    height: 60,
+                    width: 60,
+                  ),
+                ),
+              ),
+            ),
+
+            Stack(
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(15),
+                  child: ClipRRect(
+                      borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(50),
+                          topLeft: Radius.circular(10),
+                          bottomLeft: Radius.circular(15),
+                          bottomRight: Radius.circular(15)),
+                      child: Image.asset('assets/images/food.jpg')),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(17.0),
+                        child: Icon(
+                          Icons.directions_bike,
+                          color: Colors.red,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Positioned(
+                  bottom: 40,
+                  right: 110,
+                  child: Text(
+                    "POLLO FRITO",
+                    style: TextStyle(color: MyColors.white, fontSize: 30),
+                  ),
+                ),
+              ],
+            ),
+            Container(
+              width: 350,
+              margin: EdgeInsets.symmetric(vertical: 30),
+              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
+              decoration: BoxDecoration(
+                  color: MyColors.orangeFilter,
+                  borderRadius: BorderRadius.circular(29.5)),
+              child: TextField(
+                decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: "Buscar",
+                    hintStyle: TextStyle(color: MyColors.white),
+                    suffixIcon: Icon(
+                      Icons.search,
+                      color: MyColors.white,
+                    )),
+              ),
+            ),
+
+            ElevatedButton(
+                onPressed: () {},
+                style: ButtonStyle(
+                  overlayColor: getColor(Colors.white, Colors.teal),
+                ),
+                child: Text('Cambia de color')),
+
+            ElevatedButton(
+              onPressed: () => setState(() => _flag = !_flag),
+              child: Text(
+                "Cambiar Color",
+                style: TextStyle(
+                    color: _flag ? Colors.white : MyColors.orangeBorder),
+              ),
+              style: ElevatedButton.styleFrom(
+                primary: _flag ? MyColors.orangeBorder : Colors.white, //
+              ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Form(
+                  child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  TextFormField(
+                    decoration: InputDecoration(
+                      suffixIcon: Padding(
+                        padding: const EdgeInsets.all(0.0),
+                        child: Container(
+                          child: ImageButton(
+                              image:
+                                  AssetImage('assets/images/credit-card.png')),
+                        ),
+                      ),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: MyColors.orangeFilter),
+                      ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: MyColors.orangeFilter),
+                      ),
+                      hintText: "Numero de la tarjeta",
+                    ),
+                  )
+                ],
+              )),
+            ),
+
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Prueba()));
+                },
+                style: ButtonStyle(),
+                child: Text('2da pagina')),
           ],
         )));
   }
+}
+
+MaterialStateProperty<Color> getColor(Color color, Color colorPressed) {
+  final getColor = (Set<MaterialState> states) {
+    if (states.contains(MaterialState.pressed)) {
+      return colorPressed;
+    } else {
+      return color;
+    }
+  };
+
+  return MaterialStateProperty.resolveWith(getColor);
 }
