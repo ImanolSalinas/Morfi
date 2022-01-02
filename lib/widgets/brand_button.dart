@@ -17,14 +17,11 @@ class BrandButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
         style: ElevatedButton.styleFrom(
+            fixedSize: const Size(320, 45),
             side: BorderSide(width: 2.0, color: color),
-            
             onPrimary: Colors.brown,
             primary: Colors.white,
-            padding: EdgeInsets.symmetric(horizontal: 32, vertical: 10)
-            
-          ),
-        
+            padding: EdgeInsets.symmetric(horizontal: 25, vertical: 8)),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_vsc/my_colors.dart';
+import 'package:flutter_vsc/pages/primerPantalla.dart';
 import 'package:flutter_vsc/widgets/brand_button.dart';
 import 'package:flutter_vsc/widgets/direction_input.dart';
 import 'package:flutter_vsc/widgets/generic_button.dart';
@@ -7,9 +8,10 @@ import 'package:flutter_vsc/widgets/image_button.dart';
 import 'package:flutter_vsc/widgets/price_slider.dart';
 import 'package:flutter_vsc/widgets/circular_button.dart';
 import 'package:flutter_vsc/widgets/icon_image_button.dart';
+import 'package:flutter_vsc/widgets/acept_terms.dart';
 /* import 'package:flutter_vsc/widgets/button_modal.dart'; */
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'Prueba.dart';
+import 'pages/primerPantalla.dart';
 
 void main() => runApp(
     MiApp()); // estructura de la funcion main, ejecuta el primer widget de la aplicacion.
@@ -25,6 +27,7 @@ class _MiAppState extends State<MiApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "Mi App",
       home: Inicio(),
     );
@@ -52,7 +55,7 @@ class _InicioState extends State<Inicio> {
           children: [
             BrandButton(
               color: MyColors.orangeBorder,
-              icon: Icon(FontAwesomeIcons.facebook),
+              icon: Icon(FontAwesomeIcons.facebookF),
               text: Text(
                 "CONTINUÁ CON FACEBOOK",
                 style: TextStyle(
@@ -335,11 +338,14 @@ class _InicioState extends State<Inicio> {
 
             ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Prueba()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => PrimerPantalla()));
                 },
                 style: ButtonStyle(),
                 child: Text('2da pagina')),
+            AceptTerms(text: Text("Acepto los terminos y condiciones")),
           ],
         )));
   }
